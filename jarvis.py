@@ -5,6 +5,7 @@ from datetime import datetime
 import wikipedia
 import pyaudio
 import os
+
 engine = pyttsx3.init('sapi5')
 voices = engine.getProperty('voices')
 engine.setProperty('voice',voices[1].id)
@@ -58,6 +59,8 @@ if __name__ == "__main__" :
             speak("According to the Wikipedia")
             speak(results)
             print(results)
+        elif "how are you" in query:
+            speak("Im Fine, Thank You Jainam For Being Concerned.")
         elif "open google" in query:
             speak("Opening Google")
             webbrowser.open("google.com")
@@ -67,18 +70,18 @@ if __name__ == "__main__" :
         elif "open github" in query:
             speak("Opening Github")
             webbrowser.open("github.com")
-        # elif "open" in query:
-        #     query = query.replace("open","")
-        #     try:
-        #         webbrowser.open(f"{query}.com")
-        #     except Exception as e:
-        #         speak("No Such Website Found")
         elif "play music" in query:
+            speak("Playing the Songs")
             location = "E:\Programming languages\Web Development\Projects\Spotify Clone\Songs"
             songs = os.listdir(location)
             print(songs)
             os.startfile(os.path.join(location,songs[0]))
         elif "play my favourite songs" in query:
+            speak("Opening your favourite Spotify Playist")
             webbrowser.open("https://open.spotify.com/playlist/4mN3ib45YfUfl9jIB2EQMp")
         elif "play new songs" in  query:
+            speak("Opening New Songs From Spotify PLaylist")
             webbrowser.open("https://open.spotify.com/playlist/5P7H6AJYhsOr2xCbXbV7zg")
+        elif "check mails" in query:
+            speak("Open Your Gmail")
+            webbrowser.open("https://mail.google.com/mail/u/0/#inbox")
