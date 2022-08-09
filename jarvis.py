@@ -32,7 +32,8 @@ def take_command():
     r = sr.Recognizer()
     with sr.Microphone() as source:
         print("Listening....")
-        
+        r.pause_threshold = 1
+        r.adjust_for_ambient_noise(source)
         audio = r.listen(source)
     query = ''
     try:
@@ -66,18 +67,18 @@ if __name__ == "__main__" :
         elif "open github" in query:
             speak("Opening Github")
             webbrowser.open("github.com")
-        elif "open" in query:
-            query = query.replace("open","")
-            try:
-                webbrowser.open(f"{query}.com")
-            except Exception as e:
-                speak("No Such Website Found")
+        # elif "open" in query:
+        #     query = query.replace("open","")
+        #     try:
+        #         webbrowser.open(f"{query}.com")
+        #     except Exception as e:
+        #         speak("No Such Website Found")
         elif "play music" in query:
             location = "E:\Programming languages\Web Development\Projects\Spotify Clone\Songs"
             songs = os.listdir(location)
             print(songs)
             os.startfile(os.path.join(location,songs[0]))
-        elif "Play my Favourite Songs" in query:
+        elif "play my favourite songs" in query:
             webbrowser.open("https://open.spotify.com/playlist/4mN3ib45YfUfl9jIB2EQMp")
-        elif "Play new songs" in  query:
+        elif "play new songs" in  query:
             webbrowser.open("https://open.spotify.com/playlist/5P7H6AJYhsOr2xCbXbV7zg")
