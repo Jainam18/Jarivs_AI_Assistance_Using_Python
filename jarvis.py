@@ -5,6 +5,7 @@ from datetime import datetime
 import wikipedia
 import pyaudio
 import os
+import pyjokes
 
 engine = pyttsx3.init('sapi5')
 voices = engine.getProperty('voices')
@@ -85,3 +86,12 @@ if __name__ == "__main__" :
         elif "check mails" in query:
             speak("Open Your Gmail")
             webbrowser.open("https://mail.google.com/mail/u/0/#inbox")
+        elif "time" in query:
+            dt = datetime.now()
+            time = dt.strftime("%H:%M:%S")
+            speak(f"The time right now is {time}")
+        elif 'joke' in query:
+            speak(pyjokes.get_joke())
+        elif "shutdown your program" in query:
+            speak("Ok, Jainam Shutting Down My System.")
+            exit()
